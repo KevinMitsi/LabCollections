@@ -52,4 +52,6 @@ public class DetallePrestamo {
                 ", idLibroPrestado=" + idLibroPrestado +
                 '}';
     }
+
+
 }

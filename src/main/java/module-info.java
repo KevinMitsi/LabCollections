@@ -8,4 +8,5 @@ module com.example.labcollections {
 
     opens com.example.labcollections.controller to javafx.fxml;
     exports com.example.labcollections.controller;
+
 }
