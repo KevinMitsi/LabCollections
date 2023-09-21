@@ -1,7 +1,9 @@
 package com.example.labcollections.model;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Biblioteca {
     private Set<Estudiante> estudiantes;
@@ -11,6 +13,14 @@ public class Biblioteca {
 
     private String nombre;
     private String direccion;
+
+    public Biblioteca(String nombre, String direccion) {
+        this.direccion=direccion;
+        this.nombre=nombre;
+        this.estudiantes=new HashSet<>();
+        this.bibliotecarios=new TreeSet<>();
+        this.librosDisponibles=new TreeSet<>();
+    }
 
     public Biblioteca() {
     }
@@ -29,6 +39,30 @@ public class Biblioteca {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public Set<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(Set<Estudiante> estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+
+    public Set<Libro> getLibrosDisponibles() {
+        return librosDisponibles;
+    }
+
+    public void setLibrosDisponibles(Set<Libro> librosDisponibles) {
+        this.librosDisponibles = librosDisponibles;
+    }
+
+    public Set<Bibliotecario> getBibliotecarios() {
+        return bibliotecarios;
+    }
+
+    public void setBibliotecarios(Set<Bibliotecario> bibliotecarios) {
+        this.bibliotecarios = bibliotecarios;
     }
 
     @Override
@@ -73,4 +107,6 @@ public class Biblioteca {
     public Set<Bibliotecario> obtenerBibliotecariosOrdenadosPorID() {
         return bibliotecarios;
     }
+
+
 }

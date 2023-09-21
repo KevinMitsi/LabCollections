@@ -47,4 +47,6 @@ public class Prestamo {
     public int hashCode() {
         return Objects.hash(getCodigoPrestamo());
     }
+
+
 }
