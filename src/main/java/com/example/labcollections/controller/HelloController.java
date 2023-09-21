@@ -1,4 +1,4 @@
-package com.example.labcollections;
+package com.example.labcollections.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
