@@ -15,9 +15,9 @@
       <Label layoutX="234.0" layoutY="65.0" text="Nombre" />
       <Label layoutX="237.0" layoutY="122.0" text="Cedula" />
       <PasswordField fx:id="pfNombre" layoutX="182.0" layoutY="140.0" />
-      <Button fx:id="btnIngresar" layoutX="225.0" layoutY="241.0" mnemonicParsing="false" text="Ingresar" />
+      <Button fx:id="btnIngresar" layoutX="225.0" layoutY="241.0" mnemonicParsing="false" onAction="#onIngresrButtonClick" text="Ingresar" />
       <ComboBox fx:id="cbOpciones" layoutX="182.0" layoutY="190.0" prefWidth="150.0" promptText="Selecione..." />
-      <Button fx:id="btnRegister" layoutX="431.0" layoutY="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Registrarse">
+      <Button fx:id="btnRegister" layoutX="431.0" layoutY="15.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="26.0" prefWidth="66.0" text="Registrarse">
          <font>
 
             <Font size="10.0" />

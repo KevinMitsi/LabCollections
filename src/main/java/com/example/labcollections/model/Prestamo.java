@@ -48,5 +48,11 @@ public class Prestamo {
         return Objects.hash(getCodigoPrestamo());
     }
 
-
+    @Override
+    public String toString() {
+        return "Prestamo{" +
+                "codigoPrestamo='" + codigoPrestamo + '\'' +
+                ", detallesPrestamo=" + detallesPrestamo +
+                '}';
+    }
 }
