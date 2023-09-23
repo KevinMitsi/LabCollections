@@ -2,16 +2,27 @@ package com.example.labcollections.model;
 
 import java.util.Objects;
 
-public class Libro {
+public class Libro implements Comparable{
     private String titulo;
     private String autor;
+
+    private boolean isPrestado;
 
     public Libro() {
     }
 
-    public Libro(String titulo, String autor) {
+    public Libro(String titulo, String autor, boolean isPrestado) {
         this.titulo = titulo;
         this.autor = autor;
+        this.isPrestado=isPrestado;
+    }
+
+    public boolean isPrestado() {
+        return isPrestado;
+    }
+
+    public void setPrestado(boolean prestado) {
+        isPrestado = prestado;
     }
 
     public String getTitulo() {
@@ -51,8 +62,13 @@ public class Libro {
         return "Libro{" +
                 "titulo='" + titulo + '\'' +
                 ", autor='" + autor + '\'' +
+                ", isPrestado='"+ isPrestado+'\''+
                 '}';
     }
 
 
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
 }
