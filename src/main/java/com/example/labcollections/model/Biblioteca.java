@@ -1,18 +1,30 @@
 package com.example.labcollections.model;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+import com.example.labcollections.exception.BiblitecarioException;
+import com.example.labcollections.exception.EstudianteException;
+import com.example.labcollections.exception.LibroException;
+import com.example.labcollections.exception.PrestamoException;
+
+import java.util.*;
 
 public class Biblioteca {
     private Set<Estudiante> estudiantes;
     private Set<Libro> librosDisponibles;
     private Set<Bibliotecario> bibliotecarios;
 
+    private List<Prestamo> prestamos;
+
 
     private String nombre;
     private String direccion;
+
+    public List<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
+    public void setPrestamos(List<Prestamo> prestamos) {
+        this.prestamos = prestamos;
+    }
 
     public Biblioteca(String nombre, String direccion) {
         this.direccion=direccion;
@@ -20,6 +32,7 @@ public class Biblioteca {
         this.estudiantes=new HashSet<>();
         this.bibliotecarios=new TreeSet<>();
         this.librosDisponibles=new TreeSet<>();
+        this.prestamos= new ArrayList<>();
     }
 
     public Biblioteca() {
@@ -85,28 +98,49 @@ public class Biblioteca {
                 '}';
     }
 
-    public void agregarEstudiante(String id, String nombre) {
+    public void agregarEstudiante(String id, String nombre) throws EstudianteException {
         Estudiante estudiante = new Estudiante(id, nombre);
-        estudiantes.add(estudiante);
+        if (getEstudiantes().contains(estudiante)){
+            throw new EstudianteException("El estudiante ya está registrado");
+        }
+        else {
+            estudiantes.add(estudiante);
+        }
     }
 
-    public void agregarLibro(Libro libro) {
-        librosDisponibles.add(libro);
+    public void agregarLibro(Libro libro) throws LibroException {
+        if (getLibrosDisponibles().contains(libro)){
+            throw new LibroException("Este libro ya está agregado");
+        }
     }
 
-
-    public Set<Libro> obtenerLibrosDisponibles() {
-        return librosDisponibles;
+    public void agregarBibliotecario(Bibliotecario bibliotecario) throws BiblitecarioException {
+        if (getBibliotecarios().contains(bibliotecario)){
+            throw new BiblitecarioException("Este bibliotecario ya existe");
+        }
+        else {
+            getBibliotecarios().add(bibliotecario);
+        }
     }
 
-    public void agregarBibliotecario(Bibliotecario bibliotecario) {
-        bibliotecarios.add(bibliotecario);
+    public void agregarPrestamo(Prestamo prestamo) throws PrestamoException {
+        if (getPrestamos().contains(prestamo)){
+            throw new PrestamoException("Este prestamo ya existe en la base de datos");
+        }
+        else {
+            getPrestamos().add(prestamo);
+        }
     }
 
-
-    public Set<Bibliotecario> obtenerBibliotecariosOrdenadosPorID() {
-        return bibliotecarios;
+    public void verificarEstudiante(Estudiante estudiante) throws EstudianteException {
+        if (!getEstudiantes().contains(estudiante)){
+            throw new EstudianteException("Este estuiante no se encuentra registrado");
+        }
     }
 
-
+    public void  verificarBiblitecario(Bibliotecario bibliotecario) throws  BiblitecarioException{
+        if (!getBibliotecarios().contains(bibliotecario)){
+            throw  new BiblitecarioException("Este trabajador no se encuentra registrado");
+        }
+    }
 }

@@ -1,6 +1,10 @@
 package com.example.labcollections.controller;
 
 import com.example.labcollections.MainApplication;
+import com.example.labcollections.exception.BiblitecarioException;
+import com.example.labcollections.exception.EstudianteException;
+import com.example.labcollections.model.Bibliotecario;
+import com.example.labcollections.model.Estudiante;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,8 +24,41 @@ public class LoginViewController {
     public ComboBox<String> cbOpciones;
     public Button btnRegister;
 
-    public void onIngresrButtonClick(ActionEvent actionEvent) {
+    public void onIngresrButtonClick(ActionEvent actionEvent) throws IOException {
+        String nombre = tfNombre.getText();
+        String id = pfNombre.getText();
+        String valor = cbOpciones.getValue();
+        if(verificarDatos(nombre, id, valor)){
+            if(nombre.equals("admin")&&id.equals("admin123")){
+                main.abrirPanelAdmin();
+            }
+            else {
+                if(valor.equals("Estudiante")){
+                    try{
+                        singleton.verificarIngresoEstudiante(new Estudiante(id, nombre));
+                        Alerta.saltarAlertaConfirmacion("Ingresando");
+                        main.abrirPanelEstudiante(new Estudiante(id, nombre));
+                    } catch (EstudianteException e) {
+                       Alerta.saltarAlertaError(e.getMessage());
+                    }
+                }
+                if (valor.equals("Bibliotecario")){
+                    try {
+                        singleton.verificarIngresoBiblitecario(new Bibliotecario(nombre, id));
+                        Alerta.saltarAlertaConfirmacion("Ingresando");
+                        main.abrirPanelBibliotecario(new Bibliotecario(nombre, id));
+                    } catch (BiblitecarioException e) {
+                        Alerta.saltarAlertaError(e.getMessage());
+                    }
+                }
+            }
+        }
+        else {
+            Alerta.saltarAlertaError("Verificar los campos");
+        }
     }
+
+
 
     public void onRegisterButtonClick(ActionEvent actionEvent) throws IOException { //7. Cambio de pestaña
         main.abrirPestanaRegistro();
@@ -34,6 +71,18 @@ public class LoginViewController {
 
     public void setMain(MainApplication main){
         this.main=main;
+    }
+    private boolean verificarDatos(String nombre, String id, String valor) {
+        if (nombre.isBlank()){
+            return false;
+        }
+        if (id.isBlank()){
+            return false;
+        }
+        if (valor==null){
+            return false;
+        }
+        return true;
     }
 
     @FXML

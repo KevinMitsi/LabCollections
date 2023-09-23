@@ -1,6 +1,7 @@
 package com.example.labcollections.controller;
 
 import com.example.labcollections.MainApplication;
+import com.example.labcollections.exception.EstudianteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,17 +21,23 @@ public class RegisterViewController {
     public TextField tfCedula;
     public Button btnRegistro;
 
-    public void onRegistroButtonClick(ActionEvent actionEvent) { //Guardar información del registro
+    public void onRegistroButtonClick(ActionEvent actionEvent) throws EstudianteException { //Guardar información del registro
         String nombre = tfNombre.getText(); //Guardo el texto del campo "Nombre" en una variable para poder usarla
         String id = tfCedula.getText();
         String direccion = tfDireccion.getText();
         if(verificarCampos(nombre, id, direccion) && cbGenero.getValue()!=null){ //verificamos campos y que el cb no sea null
-            singleton.agregarEstudiante(id, nombre);
+            try{
+                singleton.agregarEstudiante(id, nombre);
+                Alerta.saltarAlertaConfirmacion("Felicidades se ha registrado correctamente");
+            }
+            catch (EstudianteException e){
+                Alerta.saltarAlertaError(e.getMessage());
+            }
         }
         else {
-
+            Alerta.saltarAlertaError("Debe rellenar todos los campos");
         }
-        }
+    }
 
     public void onVolverButtonClick(ActionEvent actionEvent) throws IOException { //Botones de volver
         main.inicializarLogin();

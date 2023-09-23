@@ -1,8 +1,9 @@
 package com.example.labcollections;
 
-import com.example.labcollections.controller.LoginViewController;
-import com.example.labcollections.controller.RegisterViewController;
+import com.example.labcollections.controller.*;
 import com.example.labcollections.model.Biblioteca;
+import com.example.labcollections.model.Bibliotecario;
+import com.example.labcollections.model.Estudiante;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -43,6 +44,37 @@ public class MainApplication extends Application {
         RegisterViewController controller = fxmlLoader.getController(); //8. Crear el mismo controller que pertenece a la view
         controller.setMain(this); //9.Crear un nuevo setMain
         stage.setTitle("Registro");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void abrirPanelAdmin() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("adminPanelView.fxml")); //7. Cambiar la view
+        Scene scene = new Scene(fxmlLoader.load());
+        AdminPanelViewController controller = fxmlLoader.getController();
+        controller.setMain(this);
+        stage.setTitle("Panel de Admin");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void abrirPanelEstudiante(Estudiante estudiante) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("studentPanelView.fxml")); //7. Cambiar la view
+        Scene scene = new Scene(fxmlLoader.load());
+        StudentPanelViewController controller = fxmlLoader.getController();
+        controller.setMain(this, estudiante);
+        stage.setTitle("Panel estudiante");
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public void abrirPanelBibliotecario(Bibliotecario bibliotecario) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("librarianPanelView.fxml")); //7. Cambiar la view
+        Scene scene = new Scene(fxmlLoader.load());
+        LibrarianPanelViewController controller = fxmlLoader.getController();
+        controller.setMain(this, bibliotecario);
+        stage.setTitle("Panel bibliotecario");
         stage.setScene(scene);
         stage.show();
     }
