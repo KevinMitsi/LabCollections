@@ -2,7 +2,7 @@ package com.example.labcollections.model;
 
 import java.util.Objects;
 
-public class Bibliotecario implements Comparable{
+public class Bibliotecario implements Comparable<Bibliotecario>{
     private String nombre;
     private String id;
 
@@ -51,8 +51,9 @@ public class Bibliotecario implements Comparable{
                 '}';
     }
 
+
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(Bibliotecario o) {
+        return this.nombre.compareTo(o.getNombre());
     }
 }

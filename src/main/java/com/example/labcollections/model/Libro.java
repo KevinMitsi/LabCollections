@@ -1,8 +1,9 @@
 package com.example.labcollections.model;
 
+
 import java.util.Objects;
 
-public class Libro implements Comparable{
+public class Libro implements Comparable<Libro>{
     private String titulo;
     private String autor;
 
@@ -53,10 +54,6 @@ public class Libro implements Comparable{
         return Objects.hash(getTitulo(), getAutor());
     }
 
-    public int compareTo(Libro otroLibro) {
-        return this.titulo.compareTo(otroLibro.titulo);
-    }
-
     @Override
     public String toString() {
         return "Libro{" +
@@ -68,7 +65,7 @@ public class Libro implements Comparable{
 
 
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(Libro o) {
+        return this.titulo.compareTo(o.getTitulo());
     }
 }
