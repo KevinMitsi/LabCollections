@@ -11,20 +11,10 @@ public class Biblioteca {
     private Set<Estudiante> estudiantes;
     private Set<Libro> librosDisponibles;
     private Set<Bibliotecario> bibliotecarios;
-
-    private List<Prestamo> prestamos;
-
-
+    private Map<Integer,Prestamo> prestamos;
     private String nombre;
     private String direccion;
 
-    public List<Prestamo> getPrestamos() {
-        return prestamos;
-    }
-
-    public void setPrestamos(List<Prestamo> prestamos) {
-        this.prestamos = prestamos;
-    }
 
     public Biblioteca(String nombre, String direccion) {
         this.direccion=direccion;
@@ -32,7 +22,7 @@ public class Biblioteca {
         this.estudiantes=new HashSet<>();
         this.bibliotecarios=new TreeSet<>();
         this.librosDisponibles=new TreeSet<>();
-        this.prestamos= new ArrayList<>();
+        this.prestamos= new HashMap<>();
     }
 
     public Biblioteca() {
@@ -76,6 +66,14 @@ public class Biblioteca {
 
     public void setBibliotecarios(Set<Bibliotecario> bibliotecarios) {
         this.bibliotecarios = bibliotecarios;
+    }
+
+    public Map<Integer, Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
+    public void setPrestamos(Map<Integer, Prestamo> prestamos) {
+        this.prestamos = prestamos;
     }
 
     @Override
@@ -123,12 +121,12 @@ public class Biblioteca {
         }
     }
 
-    public void agregarPrestamo(Prestamo prestamo) throws PrestamoException {
-        if (getPrestamos().contains(prestamo)){
+    public void agregarPrestamo(Integer key,Prestamo prestamo) throws PrestamoException {
+        if (getPrestamos().containsValue(prestamo)){
             throw new PrestamoException("Este prestamo ya existe en la base de datos");
         }
         else {
-            getPrestamos().add(prestamo);
+            getPrestamos().put(key,prestamo);
         }
     }
 

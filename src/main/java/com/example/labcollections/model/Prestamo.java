@@ -1,5 +1,7 @@
 package com.example.labcollections.model;
 
+import com.example.labcollections.exception.PrestamoException;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -54,5 +56,23 @@ public class Prestamo {
                 "codigoPrestamo='" + codigoPrestamo + '\'' +
                 ", detallesPrestamo=" + detallesPrestamo +
                 '}';
+    }
+
+    public void agregarDetalle(Integer key,DetallePrestamo detallePrestamo) throws PrestamoException {
+        if (detallesPrestamo.containsValue(detallePrestamo)||detallesPrestamo.containsKey(key)){
+            throw new PrestamoException("No se pueden crear detalles del préstamo iguales");
+        }
+        else {
+            detallesPrestamo.put(key, detallePrestamo);
+        }
+    }
+
+    public void eliminarDetaller(Integer key, DetallePrestamo detallePrestamo) throws PrestamoException {
+        if (!detallesPrestamo.containsValue(detallePrestamo)||!detallesPrestamo.containsKey(key)){
+            throw new PrestamoException("No se ha encontrado el prestamos que quiere eliminar");
+        }
+        else {
+            detallesPrestamo.remove(key,detallePrestamo);
+        }
     }
 }

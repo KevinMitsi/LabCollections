@@ -11,6 +11,7 @@ import com.example.labcollections.model.Prestamo;
 import com.example.labcollections.model.Libro;
 import com.example.labcollections.model.DetallePrestamo;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class ModelFactoryController {
@@ -27,8 +28,8 @@ public class ModelFactoryController {
         biblioteca.agregarBibliotecario(bibliotecario);
     }
 
-    public void agregarPrestamo(Prestamo prestamo) throws PrestamoException {
-        biblioteca.agregarPrestamo(prestamo);
+    public void agregarPrestamo(Integer key, Prestamo prestamo) throws PrestamoException {
+        biblioteca.agregarPrestamo(key, prestamo);
     }
     public void verificarIngresoEstudiante(Estudiante estudiante) throws EstudianteException {
         biblioteca.verificarEstudiante(estudiante);
@@ -51,7 +52,7 @@ public class ModelFactoryController {
         return biblioteca.getLibrosDisponibles();
     }
 
-    public List<Prestamo> getPrestamos(){
+    public Map<Integer,Prestamo> getPrestamos(){
         return biblioteca.getPrestamos();
     }
 
