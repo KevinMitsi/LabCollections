@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.labcollections.controller.StudentPanelViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
-
+<AnchorPane prefHeight="414.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labcollections.controller.StudentPanelViewController">
+   <children>
+      <TableView fx:id="tableLibrosEstudiantes" layoutX="48.0" layoutY="105.0" onDragDetected="#onDragSelection" prefHeight="200.0" prefWidth="306.0">
+        <columns>
+          <TableColumn fx:id="colNombre" prefWidth="149.60000228881836" text="Nombre" />
+          <TableColumn fx:id="colAutor" prefWidth="155.2000030517578" text="Autor" />
+        </columns>
+      </TableView>
+      <Label layoutX="48.0" layoutY="14.0" text="Bienvenido estudiante">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNombreEstudiante" layoutX="253.0" layoutY="14.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="48.0" layoutY="66.0" text="Tus libros prestados:" />
+      <TableView fx:id="tableLibrosDisponibles" layoutX="438.0" layoutY="105.0" onDragDetected="#onDragDisponible" prefHeight="200.0" prefWidth="306.0">
+        <columns>
+          <TableColumn fx:id="colNomreDispo" prefWidth="153.0" text="Nombre" />
+          <TableColumn fx:id="colAutorDispo" prefWidth="151.99997558593748" text="Autor" />
+        </columns>
+      </TableView>
+      <Label layoutX="438.0" layoutY="66.0" text="Más libros disponibles:" />
+      <Button fx:id="btnCerrar" layoutX="355.0" layoutY="374.0" mnemonicParsing="false" onAction="#onCerrarButtonClick" text="Cerrar Sesion" />
+   </children>
 </AnchorPane>
