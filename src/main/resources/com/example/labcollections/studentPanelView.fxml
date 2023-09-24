@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="414.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labcollections.controller.StudentPanelViewController">
+<AnchorPane prefHeight="615.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labcollections.controller.StudentPanelViewController">
    <children>
       <TableView fx:id="tableLibrosEstudiantes" layoutX="48.0" layoutY="105.0" onDragDetected="#onDragSelection" prefHeight="200.0" prefWidth="306.0">
         <columns>
@@ -30,6 +30,13 @@
         </columns>
       </TableView>
       <Label layoutX="438.0" layoutY="66.0" text="Más libros disponibles:" />
-      <Button fx:id="btnCerrar" layoutX="355.0" layoutY="374.0" mnemonicParsing="false" onAction="#onCerrarButtonClick" text="Cerrar Sesion" />
+      <Button fx:id="btnCerrar" layoutX="355.0" layoutY="575.0" mnemonicParsing="false" onAction="#onCerrarButtonClick" text="Cerrar Sesion" />
+      <TableView fx:id="tablePrestamos" layoutX="48.0" layoutY="357.0" onDragDetected="#onDragPrestamo" prefHeight="200.0" prefWidth="699.0">
+        <columns>
+          <TableColumn fx:id="colIdPrestamo" prefWidth="56.199981689453125" text="id" />
+          <TableColumn fx:id="colDetalle" prefWidth="641.6000091552735" text="Detalle" />
+        </columns>
+      </TableView>
+      <Label layoutX="48.0" layoutY="331.0" text="Mis préstamos" />
    </children>
 </AnchorPane>
