@@ -130,15 +130,24 @@ public class Biblioteca {
         }
     }
 
-    public void verificarEstudiante(Estudiante estudiante) throws EstudianteException {
-        if (!getEstudiantes().contains(estudiante)){
-            throw new EstudianteException("Este estuiante no se encuentra registrado");
+    public Estudiante verificarEstudiante(String contrasena, String nombre) throws EstudianteException {
+        Iterator<Estudiante> iterator = estudiantes.iterator();
+        while (iterator.hasNext()) {
+            Estudiante estudiante = iterator.next();
+            if (estudiante.getNombre().equals(nombre) && estudiante.getId().equals(contrasena)) {
+                return estudiante; // Coincide el nombre y la contraseña, retorna el estudiante
+            }
         }
+        throw new EstudianteException("Estudiante no encontrado"); // Si no se encuentra el estudiante, lanza una excepción
     }
-
-    public void  verificarBiblitecario(Bibliotecario bibliotecario) throws  BiblitecarioException{
-        if (!getBibliotecarios().contains(bibliotecario)){
-            throw  new BiblitecarioException("Este trabajador no se encuentra registrado");
+    public Bibliotecario  verificarBiblitecario(String id, String nombre) throws  BiblitecarioException{
+        Iterator<Bibliotecario> iterator = bibliotecarios.iterator();
+        while (iterator.hasNext()) {
+            Bibliotecario bibliotecario = iterator.next();
+            if (bibliotecario.getNombre().equals(nombre) && bibliotecario.getId().equals(id)) {
+                return bibliotecario; // Coincide el nombre y la contraseña, retorna el estudiante
+            }
         }
+        throw new BiblitecarioException("Estudiante no encontrado"); // Si no se encuentra el estudiante, lanza una excepción
     }
 }

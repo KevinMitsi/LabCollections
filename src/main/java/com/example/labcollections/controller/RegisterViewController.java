@@ -22,8 +22,8 @@ public class RegisterViewController {
     public Button btnRegistro;
 
     public void onRegistroButtonClick(ActionEvent actionEvent) throws EstudianteException { //Guardar información del registro
-        String nombre = tfNombre.getText(); //Guardo el texto del campo "Nombre" en una variable para poder usarla
-        String id = tfCedula.getText();
+        String nombre = tfNombre.getText().replaceAll("\\s+","").toLowerCase(); //Guardo el texto del campo "Nombre" en una variable para poder usarla
+        String id = tfCedula.getText().replaceAll("\\s+","").toLowerCase();
         String direccion = tfDireccion.getText();
         if(verificarCampos(nombre, id, direccion) && cbGenero.getValue()!=null){ //verificamos campos y que el cb no sea null
             try{
