@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.labcollections.controller.LoanStudentViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
-
-
+<AnchorPane prefHeight="548.0" prefWidth="464.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labcollections.controller.LoanStudentViewController">
+   <children>
+      <Label layoutX="113.0" layoutY="14.0" text="Detalles de préstamo">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="209.0" layoutY="86.0" text="Libro:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNombreLibro" layoutX="191.0" layoutY="114.0" text="nombreLibro" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="207.0" layoutY="182.0" text="Autor:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAutor" layoutX="189.0" layoutY="209.0" text="nombreAutor">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label layoutX="197.0" layoutY="256.0" text="Detalles:">
+         <font>
+            <Font name="System bold" size="18.0" />
+         </font>
+      </Label>
+      <TableView layoutX="22.0" layoutY="283.0" prefHeight="200.0" prefWidth="423.0">
+        <columns>
+          <TableColumn fx:id="colID" prefWidth="55.20001411437988" text="ID" />
+          <TableColumn fx:id="colDetalle" prefWidth="359.5999984741211" text="detalle" />
+        </columns>
+      </TableView>
+      <Button fx:id="Aceptar" layoutX="208.0" layoutY="508.0" mnemonicParsing="false" onAction="#onAcetarButtonClick" text="aceptar" />
+   </children>
 </AnchorPane>

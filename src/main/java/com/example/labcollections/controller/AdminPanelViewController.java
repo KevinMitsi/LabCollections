@@ -89,7 +89,7 @@ public class AdminPanelViewController {
         return bibliotecariosList;
     }
     private ObservableList<Prestamo> obtenerPrestamosRegistrados() {
-        prestamosList = FXCollections.observableArrayList(); // Inicializa la lista
+        prestamosList = FXCollections.observableArrayList();
         Iterator<Prestamo> iterator = prestamoObservableMapData.values().iterator();
         while (iterator.hasNext()) {
             Prestamo prestamo = iterator.next();

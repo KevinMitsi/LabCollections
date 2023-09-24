@@ -134,6 +134,4 @@ public class ModelFactoryController {
         biblioteca.getPrestamos().put(getPrestamos().size()+1,prestamo2);
         biblioteca.getPrestamos().put(getPrestamos().size()+1,prestamo3);
     }
-
-
 }

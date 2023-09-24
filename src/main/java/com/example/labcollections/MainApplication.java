@@ -1,9 +1,7 @@
 package com.example.labcollections;
 
 import com.example.labcollections.controller.*;
-import com.example.labcollections.model.Biblioteca;
-import com.example.labcollections.model.Bibliotecario;
-import com.example.labcollections.model.Estudiante;
+import com.example.labcollections.model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -79,7 +77,34 @@ public class MainApplication extends Application {
         stage.show();
     }
 
-    public void abrirVistaPrestamoEstudiante(Estudiante estudianteLogeado) {
 
+    public void abrirVistaLibroEstudiante(Estudiante estudianteLogeado, Libro libroPropioSeleccionado) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("studentBooksView.fxml")); //7. Cambiar la view
+        Scene scene = new Scene(fxmlLoader.load());
+        StudentBooksViewController controller = fxmlLoader.getController();
+        controller.setMain(this, estudianteLogeado, libroPropioSeleccionado);
+        stage.setTitle("Ampliacion del libro");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void abrirCrearPrestamooEstudiante(Estudiante estudianteLogeado, Libro libroDisponibleSeleccionado) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("makeLoanRequestView.fxml")); //7. Cambiar la view
+        Scene scene = new Scene(fxmlLoader.load());
+        MakeLoanRequestViewController controller = fxmlLoader.getController();
+        controller.setMain(this, estudianteLogeado, libroDisponibleSeleccionado);
+        stage.setTitle("Crear Prestamo");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void abrirAmpliarPrestamoEstudiante(Estudiante estudianteLogeado, Prestamo prestamoSeleccionado) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("loanStudentView.fxml")); //7. Cambiar la view
+        Scene scene = new Scene(fxmlLoader.load());
+        LoanStudentViewController controller = fxmlLoader.getController();
+        controller.setMain(this, estudianteLogeado, prestamoSeleccionado);
+        stage.setTitle("Ampliacióon de Libro");
+        stage.setScene(scene);
+        stage.show();
     }
 }
