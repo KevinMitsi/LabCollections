@@ -35,12 +35,12 @@
             <Font name="System bold" size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="22.0" layoutY="283.0" prefHeight="200.0" prefWidth="423.0">
+      <TableView fx:id="tablePrestamo" layoutX="22.0" layoutY="283.0" prefHeight="200.0" prefWidth="423.0">
         <columns>
           <TableColumn fx:id="colID" prefWidth="55.20001411437988" text="ID" />
           <TableColumn fx:id="colDetalle" prefWidth="359.5999984741211" text="detalle" />
         </columns>
       </TableView>
-      <Button fx:id="Aceptar" layoutX="208.0" layoutY="508.0" mnemonicParsing="false" onAction="#onAcetarButtonClick" text="aceptar" />
+      <Button fx:id="Aceptar" layoutX="204.0" layoutY="508.0" mnemonicParsing="false" onAction="#onAcetarButtonClick" text="aceptar" />
    </children>
 </AnchorPane>

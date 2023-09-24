@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 
 public class StudentBooksViewController {
+    public Button btnFinalizar;
     MainApplication main;
     ModelFactoryController singleton = ModelFactoryController.getInstance();
     Estudiante estudianteLogeado;
@@ -28,5 +29,9 @@ public class StudentBooksViewController {
 
     public void onAcetarButtonClick(ActionEvent actionEvent) throws IOException {
         main.abrirPanelEstudiante(estudianteLogeado);
+    }
+
+    public void onFinalizarButtonClick(ActionEvent actionEvent) {
+
     }
 }
