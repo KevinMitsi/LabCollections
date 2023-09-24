@@ -23,18 +23,17 @@
           <TableColumn fx:id="colCedulaEmpleado" prefWidth="107.19998779296876" text="Cedula" />
         </columns>
       </TableView>
-      <TableView fx:id="tableLibros" layoutX="55.0" layoutY="318.0" prefHeight="200.0" prefWidth="230.0">
+      <TableView fx:id="tableLibros" layoutX="22.0" layoutY="318.0" prefHeight="200.0" prefWidth="299.0">
         <columns>
-          <TableColumn fx:id="colNombreLibro" prefWidth="75.0" text="Nombre" />
-          <TableColumn fx:id="colIDLibro" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="colAutor" prefWidth="75.0" text="Autor" />
+          <TableColumn fx:id="colNombreLibro" prefWidth="121.20000267028809" text="Nombre" />
+            <TableColumn fx:id="colAutor" prefWidth="100.39999389648438" text="Autor" />
+            <TableColumn fx:id="colPrestado" prefWidth="77.20001220703125" text="Prestado" />
         </columns>
       </TableView>
       <TableView fx:id="tablePrestamo" layoutX="486.0" layoutY="318.0" onDragDetected="#onDragTablePrestamo" prefHeight="200.0" prefWidth="230.0">
         <columns>
-          <TableColumn fx:id="colLibroPrestamo" prefWidth="75.0" text="Libro" />
-          <TableColumn fx:id="colEstudiantePrestamo" prefWidth="75.0" text="Estudiante" />
-            <TableColumn fx:id="colDiasPrestamo" prefWidth="75.0" text="Días" />
+          <TableColumn fx:id="colLibroPrestamo" prefWidth="129.19998168945312" text="Libro" />
+          <TableColumn fx:id="colEstudiantePrestamo" prefWidth="100.00003662109376" text="Estudiante" />
         </columns>
       </TableView>
       <Button fx:id="btnSalir" layoutX="372.0" layoutY="518.0" mnemonicParsing="false" onAction="#onSalirButtonClick" text="salir" />

@@ -102,13 +102,20 @@ public class ModelFactoryController {
         Prestamo prestamo2 = new Prestamo("342");
         Prestamo prestamo3 = new Prestamo("782");
         //datalles Prestamo
-        DetallePrestamo detalle1 = new DetallePrestamo("123",1);
-        DetallePrestamo detalle2 = new DetallePrestamo("342",2);
-        DetallePrestamo detalle3 = new DetallePrestamo("782",3);
+        DetallePrestamo detalle1 = new DetallePrestamo("Libro prestado: Cien anios",1);
+        DetallePrestamo detalle2 = new DetallePrestamo("Libro prestado: El amor",2);
+        DetallePrestamo detalle3 = new DetallePrestamo("Libro prestado: Calculo vecotrial",3);
         //Asosiación al map
         prestamo1.getDetallesPrestamo().put(prestamo1.getDetallesPrestamo().size()+1,detalle1);
         prestamo2.getDetallesPrestamo().put(prestamo2.getDetallesPrestamo().size()+1,detalle2);
         prestamo3.getDetallesPrestamo().put(prestamo3.getDetallesPrestamo().size()+1,detalle3);
+
+        prestamo1.setEstudianteAsociado(estudiante1);
+        prestamo2.setEstudianteAsociado(estudiante1);
+        prestamo3.setEstudianteAsociado(estudiante2);
+        prestamo1.setLibroAsociado(libro1);
+        prestamo2.setLibroAsociado(libro2);
+        prestamo3.setLibroAsociado(libro3);
 
         System.out.println("Bibliteca inicializado "+ biblioteca );
         //Todo add estudiantes
@@ -118,6 +125,14 @@ public class ModelFactoryController {
         biblioteca.getBibliotecarios().add(bibliotecario);
         biblioteca.getBibliotecarios().add(bibliotecario1);
         biblioteca.getBibliotecarios().add(bibliotecario2);
+        //TODO: add Libros
+        biblioteca.getLibrosDisponibles().add(libro1);
+        biblioteca.getLibrosDisponibles().add(libro2);
+        biblioteca.getLibrosDisponibles().add(libro3);
+        //todo: add Prestamos
+        biblioteca.getPrestamos().put(getPrestamos().size()+1,prestamo1);
+        biblioteca.getPrestamos().put(getPrestamos().size()+1,prestamo2);
+        biblioteca.getPrestamos().put(getPrestamos().size()+1,prestamo3);
     }
 
 

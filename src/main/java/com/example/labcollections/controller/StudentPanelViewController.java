@@ -15,6 +15,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
+
 public class StudentPanelViewController {
     private ObservableSet<Libro> librosEstudiantesData = FXCollections.observableSet();
     private ObservableSet<Libro> librosDisponiblesData = FXCollections.observableSet();
@@ -55,10 +57,12 @@ public class StudentPanelViewController {
 
     }
 
-    public void onCerrarButtonClick(ActionEvent actionEvent) {
+    public void onCerrarButtonClick(ActionEvent actionEvent) throws IOException {
+        main.inicializarLogin();
     }
 
     public void onDragDisponible(MouseEvent mouseEvent) {
+
     }
     @FXML
     void initialize(){
