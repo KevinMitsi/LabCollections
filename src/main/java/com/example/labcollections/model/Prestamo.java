@@ -9,6 +9,9 @@ import java.util.Objects;
 public class Prestamo {
     private String codigoPrestamo;
     private Map<Integer, DetallePrestamo> detallesPrestamo;
+    private Libro libroAsociado;
+    private Estudiante estudianteAsociado;
+
 
     public Prestamo(String codigoPrestamo) {
         this.codigoPrestamo = codigoPrestamo;
@@ -36,6 +39,21 @@ public class Prestamo {
 
     public void setDetallesPrestamo(Map<Integer, DetallePrestamo> detallesPrestamo) {
         this.detallesPrestamo = detallesPrestamo;
+    }
+    public Libro getLibroAsociado() {
+        return libroAsociado;
+    }
+
+    public void setLibroAsociado(Libro libroAsociado) {
+        this.libroAsociado = libroAsociado;
+    }
+
+    public Estudiante getEstudianteAsociado() {
+        return estudianteAsociado;
+    }
+
+    public void setEstudianteAsociado(Estudiante estudianteAsociado) {
+        this.estudianteAsociado = estudianteAsociado;
     }
 
     @Override
