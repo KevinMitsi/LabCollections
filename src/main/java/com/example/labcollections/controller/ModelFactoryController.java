@@ -10,7 +10,7 @@ import com.example.labcollections.model.Bibliotecario;
 import com.example.labcollections.model.Prestamo;
 import com.example.labcollections.model.Libro;
 import com.example.labcollections.model.DetallePrestamo;
-import java.util.List;
+
 import java.util.Map;
 import java.util.Set;
 
@@ -31,11 +31,11 @@ public class ModelFactoryController {
     public void agregarPrestamo(Integer key, Prestamo prestamo) throws PrestamoException {
         biblioteca.agregarPrestamo(key, prestamo);
     }
-    public void verificarIngresoEstudiante(Estudiante estudiante) throws EstudianteException {
-        biblioteca.verificarEstudiante(estudiante);
+    public Estudiante verificarIngresoEstudiante(String id, String estudiante) throws EstudianteException {
+       return biblioteca.verificarEstudiante(id,estudiante);
     }
-    public void verificarIngresoBiblitecario(Bibliotecario bibliotecario) throws BiblitecarioException {
-        biblioteca.verificarBiblitecario(bibliotecario);
+    public Bibliotecario verificarIngresoBiblitecario(String id, String nombre) throws BiblitecarioException {
+        return biblioteca.verificarBiblitecario(id, nombre);
     }
 
 
@@ -76,7 +76,6 @@ public class ModelFactoryController {
         //Siempre se debe verificar si la raiz del recurso es null
         if(biblioteca == null)
         {
-            System.out.println("es null");
             inicializarDatos();
          }
 
@@ -91,8 +90,8 @@ public class ModelFactoryController {
         Bibliotecario bibliotecario1 = new Bibliotecario("Juan", "3211");
         Bibliotecario bibliotecario2 = new Bibliotecario("Patricio", "1424");
         //Estudiantes
-        Estudiante estudiante1 = new Estudiante("1092", "Ana Sofia Duque Torres");
-        Estudiante estudiante2 = new Estudiante("1004", "Kevin Andrés García Aguirre");
+        Estudiante estudiante1 = new Estudiante("1092", "Ana Sofia Duque Torres".replaceAll("\\s+","").toLowerCase());
+        Estudiante estudiante2 = new Estudiante("1004", "Kevin Andrés García Aguirre".replaceAll("\\s+","").toLowerCase());
         //Libros
         Libro libro1 = new Libro("Cien anios de soledad", "Grabiel Garcia Marques",false);
         Libro libro2 = new Libro("El Amor en los tiempos de colera", "Grabiel Garcia Marques",false);
@@ -116,12 +115,12 @@ public class ModelFactoryController {
         prestamo1.setLibroAsociado(libro1);
         prestamo2.setLibroAsociado(libro2);
         prestamo3.setLibroAsociado(libro3);
+        estudiante1.getMisLibros().add(libro1);
+        estudiante1.getMisLibros().add(libro2);
+        estudiante2.getMisLibros().add(libro3);
 
         System.out.println("Bibliteca inicializado "+ biblioteca );
-        //Todo add estudiantes
-        biblioteca.getEstudiantes().add(estudiante1);
-        biblioteca.getEstudiantes().add(estudiante2);
-        //todo: add biblietecarios
+         //todo: add biblietecarios
         biblioteca.getBibliotecarios().add(bibliotecario);
         biblioteca.getBibliotecarios().add(bibliotecario1);
         biblioteca.getBibliotecarios().add(bibliotecario2);
@@ -133,5 +132,12 @@ public class ModelFactoryController {
         biblioteca.getPrestamos().put(getPrestamos().size()+1,prestamo1);
         biblioteca.getPrestamos().put(getPrestamos().size()+1,prestamo2);
         biblioteca.getPrestamos().put(getPrestamos().size()+1,prestamo3);
+        estudiante1.getMisPrestamos().put(estudiante1.getMisPrestamos().size()+1,prestamo1);
+        estudiante1.getMisPrestamos().put(estudiante1.getMisPrestamos().size()+1,prestamo2);
+        estudiante2.getMisPrestamos().put(estudiante2.getMisPrestamos().size()+1,prestamo3);
+        //Todo add estudiantes
+        biblioteca.getEstudiantes().add(estudiante1);
+        biblioteca.getEstudiantes().add(estudiante2);
+
     }
 }

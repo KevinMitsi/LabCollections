@@ -30,7 +30,7 @@ public class StudentPanelViewController {
     private ObservableSet<Libro> librosDisponiblesData = FXCollections.observableSet();
     private ObservableList<Libro> librosEstudiantesList;
     private ObservableList<Libro> librosDisponiblesList;
-    private ObservableMap<Integer, Prestamo>observableMapData = FXCollections.observableHashMap();
+    private ObservableMap<Integer, Prestamo>observableMapData;
     private ObservableList<Prestamo>prestamosList;
     private Libro libroPropioSeleccionado = null;
     private Libro libroDisponibleSeleccionado = null;
@@ -52,13 +52,16 @@ public class StudentPanelViewController {
 
     public void setMain(MainApplication main, Estudiante estudiante) {
         this.main = main;
-        estudianteLogeado = estudiante;
+        this.estudianteLogeado = estudiante;
+        observableMapData = FXCollections.observableMap(estudianteLogeado.getMisPrestamos());
         lblNombreEstudiante.setText(estudiante.getNombre());
         tableLibrosDisponibles.getItems().clear();
         tableLibrosDisponibles.setItems(obtenerLibrosDisponibles());
         tableLibrosEstudiantes.getItems().clear();
         tableLibrosEstudiantes.setItems(obtenerLibrosEstudiantes());
-    }
+        tablePrestamos.getItems().clear();
+        tablePrestamos.setItems(obtenerPrestamosRegistrados());
+        }
 
     public void onDragSelection(MouseEvent mouseEvent) throws IOException {
         if (libroPropioSeleccionado==null){
@@ -114,7 +117,7 @@ public class StudentPanelViewController {
     }
 
     private ObservableList<Libro> obtenerLibrosDisponibles(){
-        librosEstudiantesData.addAll(singleton.getLibros());
+        librosDisponiblesData.addAll(singleton.getLibros());
         librosDisponiblesList= FXCollections.observableArrayList(librosDisponiblesData);
         return librosDisponiblesList;
     }

@@ -25,8 +25,8 @@ public class LoginViewController {
     public Button btnRegister;
 
     public void onIngresrButtonClick(ActionEvent actionEvent) throws IOException {
-        String nombre = tfNombre.getText();
-        String id = pfNombre.getText();
+        String nombre = tfNombre.getText().replaceAll("\\s+","").toLowerCase();
+        String id = pfNombre.getText().replaceAll("\\s+","").toLowerCase();
         String valor = cbOpciones.getValue();
         if(verificarDatos(nombre, id, valor)){
             if(nombre.equals("admin")&&id.equals("admin123")){
@@ -35,18 +35,18 @@ public class LoginViewController {
             else {
                 if(valor.equals("Estudiante")){
                     try{
-                        singleton.verificarIngresoEstudiante(new Estudiante(id, nombre));
+                        Estudiante estudiante = singleton.verificarIngresoEstudiante(id, nombre);
                         Alerta.saltarAlertaConfirmacion("Ingresando");
-                        main.abrirPanelEstudiante(new Estudiante(id, nombre));
+                        main.abrirPanelEstudiante(estudiante);
                     } catch (EstudianteException e) {
                        Alerta.saltarAlertaError(e.getMessage());
                     }
                 }
                 if (valor.equals("Bibliotecario")){
                     try {
-                        singleton.verificarIngresoBiblitecario(new Bibliotecario(nombre, id));
+                        Bibliotecario bibliotecario = singleton.verificarIngresoBiblitecario(id, nombre);
                         Alerta.saltarAlertaConfirmacion("Ingresando");
-                        main.abrirPanelBibliotecario(new Bibliotecario(nombre, id));
+                        main.abrirPanelBibliotecario(bibliotecario);
                     } catch (BiblitecarioException e) {
                         Alerta.saltarAlertaError(e.getMessage());
                     }
