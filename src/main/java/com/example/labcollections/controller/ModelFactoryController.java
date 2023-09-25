@@ -75,6 +75,7 @@ public class ModelFactoryController {
     }
 
 
+
     //------------------------------  Singleton ------------------------------------------------
     // Clase estatica oculta. Tan solo se instanciara el singleton una vez
     private static class SingletonHolder {

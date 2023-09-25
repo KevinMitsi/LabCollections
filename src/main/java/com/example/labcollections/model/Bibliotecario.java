@@ -56,4 +56,8 @@ public class Bibliotecario implements Comparable<Bibliotecario>{
     public int compareTo(Bibliotecario o) {
         return this.nombre.compareTo(o.getNombre());
     }
+
+    public void agregarDetallePrestamo(Prestamo prestamoSeleccionado, String text) {
+        prestamoSeleccionado.getDetallesPrestamo().put(prestamoSeleccionado.getDetallesPrestamo().size()+1, new DetallePrestamo(text, (int)(Math.random()*129)));
+    }
 }

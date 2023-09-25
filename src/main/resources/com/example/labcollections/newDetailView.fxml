@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="113.0" prefWidth="319.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labcollections.controller.NewDetailViewController">
+   <children>
+      <Button fx:id="btnAgregar" layoutX="134.0" layoutY="86.0" mnemonicParsing="false" onAction="#onAgregar" text="Agregar" />
+      <Button fx:id="btnVolver" layoutX="7.0" layoutY="1.0" mnemonicParsing="false" onAction="#onVolver" text="&lt;-" />
+      <TextField fx:id="tfDetale" layoutX="85.0" layoutY="44.0" />
+      <Label layoutX="146.0" layoutY="18.0" text="Detalle:" />
+   </children>
+</AnchorPane>
