@@ -1,6 +1,7 @@
 package com.example.labcollections.controller;
 
 import com.example.labcollections.MainApplication;
+import com.example.labcollections.exception.BiblitecarioException;
 import com.example.labcollections.exception.EstudianteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,42 +11,39 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class RegisterViewController {
+public class CreateEmployeeViewController {
     ModelFactoryController singleton = ModelFactoryController.getInstance(); //Volver a paso 1 y hacerlo de nuevo
     MainApplication main;
-
     public Button btnVolver;
-    public ComboBox<String> cbGenero;
+    public ComboBox<String>cbGenero;
     public TextField tfNombre;
     public TextField tfDireccion;
     public TextField tfCedula;
     public Button btnRegistro;
 
-    public void onRegistroButtonClick(ActionEvent actionEvent) throws EstudianteException { //Guardar información del registro
+    public void onVolverButtonClick(ActionEvent actionEvent) throws IOException {
+        main.abrirPanelAdmin();
+    }
+
+    public void onRegistroButtonClick(ActionEvent actionEvent) {
         String nombre = tfNombre.getText().replaceAll("\\s+","").toLowerCase(); //Guardo el texto del campo "Nombre" en una variable para poder usarla
         String id = tfCedula.getText().replaceAll("\\s+","").toLowerCase();
         String direccion = tfDireccion.getText();
         if(verificarCampos(nombre, id, direccion) && cbGenero.getValue()!=null){ //verificamos campos y que el cb no sea null
             try{
-                singleton.agregarEstudiante(id, nombre);
+                singleton.agregarBiblitecario(nombre, id);
                 Alerta.saltarAlertaConfirmacion("Felicidades se ha registrado correctamente");
                 main.abrirPanelAdmin();
-            }
-            catch (EstudianteException e){
-                Alerta.saltarAlertaError(e.getMessage());
             } catch (IOException e) {
                 throw new RuntimeException(e);
+            } catch (BiblitecarioException e) {
+                Alerta.saltarAlertaError(e.getMessage());
             }
         }
         else {
             Alerta.saltarAlertaError("Debe rellenar todos los campos");
         }
     }
-
-    public void onVolverButtonClick(ActionEvent actionEvent) throws IOException { //Botones de volver
-        main.inicializarLogin();
-    }
-
     public void setMain(MainApplication main) { //Reemplazar el nombre por main
         this.main = main;
     }
@@ -67,7 +65,8 @@ public class RegisterViewController {
 
 
 
-    @FXML //ComboBox o Tablas
+    @FXML
+        //ComboBox o Tablas
     void initialize(){
         cbGenero.getItems().add("Masculino");
         cbGenero.getItems().add("Femenino");

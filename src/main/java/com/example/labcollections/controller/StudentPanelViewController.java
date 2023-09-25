@@ -117,7 +117,7 @@ public class StudentPanelViewController {
     }
 
     private ObservableList<Libro> obtenerLibrosDisponibles(){
-        librosDisponiblesData.addAll(singleton.getLibros());
+        librosDisponiblesData.addAll(singleton.getLibrosDisponibles());
         librosDisponiblesList= FXCollections.observableArrayList(librosDisponiblesData);
         return librosDisponiblesList;
     }

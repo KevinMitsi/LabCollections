@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labcollections.controller.CreateEmployeeViewController">
+    <children>
+        <Button fx:id="btnVolver" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onVolverButtonClick" text="volver" />
+        <ComboBox fx:id="cbGenero" layoutX="226.0" layoutY="293.0" prefWidth="150.0" promptText="seleccione...." />
+        <TextField fx:id="tfNombre" layoutX="226.0" layoutY="123.0" />
+        <TextField fx:id="tfDireccion" layoutX="226.0" layoutY="230.0" />
+        <TextField fx:id="tfCedula" layoutX="226.0" layoutY="174.0" />
+        <Label layoutX="275.0" layoutY="97.0" text="Nombre:" />
+        <Label layoutX="275.0" layoutY="156.0" text="ID|Cédula" />
+        <Label layoutX="275.0" layoutY="212.0" text="direccion" />
+        <Label layoutX="275.0" layoutY="268.0" text="genero" />
+        <Button fx:id="btnRegistro" layoutX="263.0" layoutY="360.0" mnemonicParsing="false" onAction="#onRegistroButtonClick" text="Registrarse" />
+        <Label layoutX="275.0" layoutY="31.0" text="Registro Bibliotecario">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
+    </children>
+
+</AnchorPane>

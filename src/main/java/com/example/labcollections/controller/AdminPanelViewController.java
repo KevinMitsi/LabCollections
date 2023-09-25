@@ -110,4 +110,7 @@ public class AdminPanelViewController {
         colEstudiantePrestamo.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getEstudianteAsociado().getNombre()));
     }
 
+    public void OnDragEmpleado(MouseEvent mouseEvent) throws IOException {
+        main.abrirCrearEmpleado();
+    }
 }
