@@ -49,5 +49,7 @@ public class RegisterNewBookView {
             return false;
         }
         return true;
+
+
     }
 }

@@ -73,4 +73,5 @@ public class CreateEmployeeViewController {
         cbGenero.getItems().add("Otro");
         cbGenero.getItems().add("Helicotero Apache");
     }
+
 }

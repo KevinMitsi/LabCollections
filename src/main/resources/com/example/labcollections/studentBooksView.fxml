@@ -33,6 +33,7 @@
         <Button fx:id="Aceptar" layoutX="96.0" layoutY="298.0" mnemonicParsing="false" onAction="#onAcetarButtonClick" text="aceptar" />
       <Button fx:id="btnFinalizar" layoutX="188.0" layoutY="298.0" mnemonicParsing="false" onAction="#onFinalizarButtonClick" text="Finalizar Prestamo" />
     </children>
+    
 
 
 </AnchorPane>

@@ -18,10 +18,6 @@ public class LibrarianPanelViewController {
 
 
 
-
-
-
-
     public void setMain(MainApplication main, Bibliotecario bibliotecario) {
         this.main=main;
         bibliotecarioLogeado = bibliotecario;

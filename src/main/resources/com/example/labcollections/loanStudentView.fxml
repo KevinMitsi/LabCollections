@@ -44,3 +44,4 @@
       <Button fx:id="Aceptar" layoutX="204.0" layoutY="508.0" mnemonicParsing="false" onAction="#onAcetarButtonClick" text="aceptar" />
    </children>
 </AnchorPane>
+

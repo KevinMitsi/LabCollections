@@ -19,3 +19,4 @@
       <Button fx:id="btnVolver" layoutY="3.0" mnemonicParsing="false" onAction="#onVolverButtonClick" prefHeight="8.0" prefWidth="33.0" text="&lt;-" />
    </children>
 </AnchorPane>
+
