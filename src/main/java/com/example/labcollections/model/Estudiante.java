@@ -105,12 +105,22 @@ public class Estudiante {
         }
     }
 
-    public void finalizarPrestamo(Integer key, Prestamo prestamo) throws PrestamoException {
-        if (!misPrestamos.containsValue(prestamo)){
-            throw new PrestamoException("Este préstamo ya fue finalizado");
-        }
-        else {
-            misPrestamos.remove(key, prestamo);
+    public void finalizarPrestamo(Prestamo prestamo) throws PrestamoException {
+        // Verificar si el préstamo existe en el HashMap
+        if (!misPrestamos.containsValue(prestamo)) {
+            throw new PrestamoException("Este préstamo no existe o ya fue finalizado");
+        } else {
+            // Iterar a través de las entradas del HashMap para encontrar el préstamo
+            Iterator<Map.Entry<Integer, Prestamo>> iterator = misPrestamos.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<Integer, Prestamo> entry = iterator.next();
+                if (entry.getValue().equals(prestamo)) {
+                    // Remover el préstamo del HashMap
+                    iterator.remove();
+                    System.out.println("Préstamo finalizado y eliminado del sistema.");
+                    return; // Salir del método después de eliminar el préstamo
+                }
+            }
         }
     }
 
