@@ -74,4 +74,5 @@ public class RegisterViewController {
         cbGenero.getItems().add("Otro");
         cbGenero.getItems().add("Helicotero Apache");
     }
+
 }

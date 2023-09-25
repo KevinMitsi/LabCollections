@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="269.0" prefWidth="193.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labcollections.controller.RegisterNewBookView">
+   <children>
+      <Label layoutX="60.0" layoutY="5.0" text="Nuevo Libro">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnAgregar" layoutX="71.0" layoutY="242.0" mnemonicParsing="false" onAction="#onAgregarButtonCLick" text="Agregar" />
+      <TextField fx:id="tfTitulo" layoutX="22.0" layoutY="97.0" />
+      <TextField fx:id="tfAutor" layoutX="23.0" layoutY="172.0" />
+      <Label layoutX="83.0" layoutY="70.0" text="Titulo:" />
+      <Label layoutX="83.0" layoutY="155.0" text="Autor:" />
+      <Button fx:id="btnVolver" layoutY="3.0" mnemonicParsing="false" onAction="#onVolverButtonClick" prefHeight="8.0" prefWidth="33.0" text="&lt;-" />
+   </children>
+</AnchorPane>
+

@@ -117,4 +117,14 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void abrirCrearLibro() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("registerNewBookView.fxml")); //7. Cambiar la view
+        Scene scene = new Scene(fxmlLoader.load());
+        RegisterNewBookView controller = fxmlLoader.getController();
+        controller.setMain(this);
+        stage.setTitle("Agregar libro");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

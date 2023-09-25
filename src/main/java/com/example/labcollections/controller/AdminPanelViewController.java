@@ -113,4 +113,9 @@ public class AdminPanelViewController {
     public void OnDragEmpleado(MouseEvent mouseEvent) throws IOException {
         main.abrirCrearEmpleado();
     }
+
+    public void onDragLibroDetected(MouseEvent mouseEvent) throws IOException {
+        main.abrirCrearLibro();
+    }
+
 }
