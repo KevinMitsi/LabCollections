@@ -55,13 +55,24 @@ public class LibrarianPanelViewController {
     }
 
     public void onDragLibros(MouseEvent mouseEvent) {
-
     }
 
-    public void onDragTablePrestamo(MouseEvent mouseEvent) {
+    public void onDragTablePrestamo(MouseEvent mouseEvent) throws IOException {
+        main.abrirVerPrestamoBibliotecario(bibliotecarioLogeado,prestamoSeleccionado);
     }
 
-    public void onPrestamoCLick(ActionEvent actionEvent) {
+    public void onPrestamoCLick(ActionEvent actionEvent) throws IOException {
+        if (libroDisponibleSeleccionado==null){
+            Alerta.saltarAlertaError("Debe seleccionar un libro para prestar");
+        }
+        else {
+            if (libroDisponibleSeleccionado.isPrestado()){
+                Alerta.saltarAlertaError("Este libro ya está prestado");
+            }
+            else {
+                main.abrirCrearPrestamoBiblitecario(bibliotecarioLogeado,libroDisponibleSeleccionado);
+            }
+           }
     }
     public void setMain(MainApplication main, Bibliotecario bibliotecario) {
         this.main=main;
@@ -105,6 +116,7 @@ public class LibrarianPanelViewController {
         colNombre.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getNombre()));
         colCedula.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getId()));
       colAutor.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getAutor()));
+        colTitulo.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getTitulo()));
         colPrestado.setCellValueFactory(cellData-> new SimpleBooleanProperty(cellData.getValue().isPrestado()));
         colLibroPrestamo.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getLibroAsociado().getTitulo()));
         colEstudiantePrestamo.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getEstudianteAsociado().getNombre()));

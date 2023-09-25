@@ -127,4 +127,34 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void abrirCrearPrestamoBiblitecario(Bibliotecario bibliotecarioLogeado,Libro libroDisponibleSeleccionado) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("acceptLoanView.fxml")); //7. Cambiar la view
+        Scene scene = new Scene(fxmlLoader.load());
+        AcceptLoanViewController controller = fxmlLoader.getController();
+        controller.setMain(this, bibliotecarioLogeado,libroDisponibleSeleccionado);
+        stage.setTitle("Prestamo");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void abrirVerPrestamoBibliotecario(Bibliotecario bibliotecarioLogeado,Prestamo prestamoSeleccionado) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("librarianLoansView.fxml")); //7. Cambiar la view
+        Scene scene = new Scene(fxmlLoader.load());
+        LibrarianLoansViewController controller = fxmlLoader.getController();
+        controller.setMain(this, bibliotecarioLogeado,prestamoSeleccionado);
+        stage.setTitle("Prestamo");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void abrirAgregarDetalle(Bibliotecario bibliotecarioLogeado, Prestamo prestamoSeleccionado) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("newDetailView.fxml")); //7. Cambiar la view
+        Scene scene = new Scene(fxmlLoader.load());
+        NewDetailViewController controller = fxmlLoader.getController();
+        controller.setMain(this,bibliotecarioLogeado,prestamoSeleccionado);
+        stage.setTitle("Agregar detalle");
+        stage.setScene(scene);
+        stage.show();
+    }
 }
