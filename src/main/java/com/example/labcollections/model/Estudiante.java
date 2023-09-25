@@ -81,8 +81,13 @@ public class Estudiante {
             throw new LibroException("Ya tienes este libro prestado");
         }
         else {
-            libro.setPrestado(true);
-            misLibros.add(libro);
+            if (libro.isPrestado()){
+                throw new LibroException("Este libro no está disponible");
+            }
+            else {
+                libro.setPrestado(true);
+                misLibros.add(libro);
+            }
         }
     }
 

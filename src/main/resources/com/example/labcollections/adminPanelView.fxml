@@ -17,7 +17,7 @@
           <TableColumn fx:id="colCedula" prefWidth="113.00001525878906" text="Cedula" />
         </columns>
       </TableView>
-      <TableView fx:id="tableEmpleados" layoutX="486.0" layoutY="84.0" prefHeight="200.0" prefWidth="230.0">
+      <TableView fx:id="tableEmpleados" layoutX="486.0" layoutY="84.0" onDragDetected="#OnDragEmpleado" prefHeight="200.0" prefWidth="230.0">
         <columns>
           <TableColumn fx:id="colNombreEmpleado" prefWidth="121.60003662109375" text="Nombre" />
           <TableColumn fx:id="colCedulaEmpleado" prefWidth="107.19998779296876" text="Cedula" />

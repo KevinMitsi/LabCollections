@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.labcollections.controller.MakeLoanRequestViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
-
+<AnchorPane prefHeight="363.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labcollections.controller.MakeLoanRequestViewController">
+   <children>
+      <Label layoutX="96.0" layoutY="14.0" text="Detalles de libro">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="163.0" layoutY="84.0" text="Libro:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNombreLibro" layoutX="145.0" layoutY="111.0" text="nombreLibro" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="161.0" layoutY="169.0" text="Autor:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAutor" layoutX="143.0" layoutY="205.0" text="nombreAutor" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Button fx:id="btnRegresar" layoutX="96.0" layoutY="298.0" mnemonicParsing="false" onAction="#onRegresarButonCLick" text="Regresar" />
+      <Button fx:id="btnAgregar" layoutX="188.0" layoutY="298.0" mnemonicParsing="false" onAction="#onAgregarButtonClick" text="Agregar libro" />
+   </children>
 </AnchorPane>

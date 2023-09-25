@@ -106,13 +106,18 @@ public class Biblioteca {
         }
     }
 
-    public void agregarLibro(Libro libro) throws LibroException {
-        if (getLibrosDisponibles().contains(libro)){
+    public void agregarLibro(String autor, String nombreLibro) throws LibroException {
+        Libro libro = new Libro(autor,nombreLibro,false);
+        if (getLibrosDisponibles().contains(nombreLibro)){
             throw new LibroException("Este libro ya está agregado");
+        }
+        else {
+            getLibrosDisponibles().add(libro);
         }
     }
 
-    public void agregarBibliotecario(Bibliotecario bibliotecario) throws BiblitecarioException {
+    public void agregarBibliotecario(String id, String nombre) throws BiblitecarioException {
+        Bibliotecario bibliotecario = new Bibliotecario(nombre, id);
         if (getBibliotecarios().contains(bibliotecario)){
             throw new BiblitecarioException("Este bibliotecario ya existe");
         }
@@ -148,7 +153,7 @@ public class Biblioteca {
                 return bibliotecario; // Coincide el nombre y la contraseña, retorna el estudiante
             }
         }
-        throw new BiblitecarioException("Estudiante no encontrado"); // Si no se encuentra el estudiante, lanza una excepción
+        throw new BiblitecarioException("Bibliotecario no encontrado"); // Si no se encuentra el estudiante, lanza una excepción
     }
 
     public Prestamo obtenerPrestamo(Libro libroSeleccionado) throws PrestamoException {

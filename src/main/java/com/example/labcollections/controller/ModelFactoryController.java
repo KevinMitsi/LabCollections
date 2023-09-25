@@ -11,8 +11,10 @@ import com.example.labcollections.model.Prestamo;
 import com.example.labcollections.model.Libro;
 import com.example.labcollections.model.DetallePrestamo;
 
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class ModelFactoryController {
     Biblioteca biblioteca;
@@ -20,12 +22,12 @@ public class ModelFactoryController {
     public void agregarEstudiante(String id, String nombre) throws EstudianteException {
         biblioteca.agregarEstudiante(id, nombre);
     }
-    public void agregarLibro(Libro libro) throws LibroException {
-        biblioteca.agregarLibro(libro);
+    public void agregarLibro(String autor, String nombreLibro) throws LibroException {
+        biblioteca.agregarLibro(autor, nombreLibro);
     }
 
-    public void agregarBiblitecario(Bibliotecario bibliotecario) throws BiblitecarioException {
-        biblioteca.agregarBibliotecario(bibliotecario);
+    public void agregarBiblitecario(String id, String nombre) throws BiblitecarioException {
+        biblioteca.agregarBibliotecario(id, nombre);
     }
 
     public void agregarPrestamo(Integer key, Prestamo prestamo) throws PrestamoException {
@@ -60,6 +62,18 @@ public class ModelFactoryController {
         return biblioteca.obtenerPrestamo(libroSeleccionado);
     }
 
+    public Set<Libro>getLibrosDisponibles(){
+        Set<Libro>disponibles = new TreeSet<>();
+        Iterator<Libro> iterator = getLibros().iterator();
+        while (iterator.hasNext()){
+            Libro libro = iterator.next();
+            if (!libro.isPrestado()){
+                disponibles.add(libro);
+            }
+        }
+        return disponibles;
+    }
+
 
     //------------------------------  Singleton ------------------------------------------------
     // Clase estatica oculta. Tan solo se instanciara el singleton una vez
@@ -88,9 +102,9 @@ public class ModelFactoryController {
 
         biblioteca = new Biblioteca("Chapeco", "aquino");
         //Bibliotecarios
-        Bibliotecario bibliotecario = new Bibliotecario("Camilo", "123");
-        Bibliotecario bibliotecario1 = new Bibliotecario("Juan", "3211");
-        Bibliotecario bibliotecario2 = new Bibliotecario("Patricio", "1424");
+        Bibliotecario bibliotecario = new Bibliotecario(("Camilo".replaceAll("\\s+","").toLowerCase()), "123");
+        Bibliotecario bibliotecario1 = new Bibliotecario(("Juan".replaceAll("\\s+","").toLowerCase()), "3211");
+        Bibliotecario bibliotecario2 = new Bibliotecario(("Patricio".replaceAll("\\s+","").toLowerCase()), "1424");
         //Estudiantes
         Estudiante estudiante1 = new Estudiante("1092", "Ana Sofia Duque Torres".replaceAll("\\s+","").toLowerCase());
         Estudiante estudiante2 = new Estudiante("1004", "Kevin Andrés García Aguirre".replaceAll("\\s+","").toLowerCase());
@@ -98,6 +112,9 @@ public class ModelFactoryController {
         Libro libro1 = new Libro("Cien anios de soledad", "Grabiel Garcia Marques",false);
         Libro libro2 = new Libro("El Amor en los tiempos de colera", "Grabiel Garcia Marques",false);
         Libro libro3 = new Libro("Calculo vectorial multivariado", "Stewart",false);
+        Libro libro4 = new Libro("Calculo Integral", "Stewart",false);
+        Libro libro5 = new Libro("Calculo Diferencial", "Stewart",false);
+
         //prestamos
         Prestamo prestamo1 = new Prestamo("123");
         Prestamo prestamo2 = new Prestamo("342");
@@ -120,6 +137,9 @@ public class ModelFactoryController {
         estudiante1.getMisLibros().add(libro1);
         estudiante1.getMisLibros().add(libro2);
         estudiante2.getMisLibros().add(libro3);
+        libro1.setPrestado(true);
+        libro2.setPrestado(true);
+        libro3.setPrestado(true);
 
         System.out.println("Bibliteca inicializado "+ biblioteca );
          //todo: add biblietecarios
@@ -130,6 +150,8 @@ public class ModelFactoryController {
         biblioteca.getLibrosDisponibles().add(libro1);
         biblioteca.getLibrosDisponibles().add(libro2);
         biblioteca.getLibrosDisponibles().add(libro3);
+        biblioteca.getLibrosDisponibles().add(libro4);
+        biblioteca.getLibrosDisponibles().add(libro5);
         //todo: add Prestamos
         biblioteca.getPrestamos().put(getPrestamos().size()+1,prestamo1);
         biblioteca.getPrestamos().put(getPrestamos().size()+1,prestamo2);

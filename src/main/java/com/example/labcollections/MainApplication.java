@@ -107,4 +107,14 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void abrirCrearEmpleado() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("createEmployeeView.fxml")); //7. Cambiar la view
+        Scene scene = new Scene(fxmlLoader.load());
+        CreateEmployeeViewController controller = fxmlLoader.getController();
+        controller.setMain(this);
+        stage.setTitle("Crear empleado");
+        stage.setScene(scene);
+        stage.show();
+    }
 }
