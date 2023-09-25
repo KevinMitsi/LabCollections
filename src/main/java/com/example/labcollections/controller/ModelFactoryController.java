@@ -56,7 +56,9 @@ public class ModelFactoryController {
         return biblioteca.getPrestamos();
     }
 
-
+    public Prestamo obtenerPrestamo(Libro libroSeleccionado) throws PrestamoException {
+        return biblioteca.obtenerPrestamo(libroSeleccionado);
+    }
 
 
     //------------------------------  Singleton ------------------------------------------------

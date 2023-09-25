@@ -150,4 +150,15 @@ public class Biblioteca {
         }
         throw new BiblitecarioException("Estudiante no encontrado"); // Si no se encuentra el estudiante, lanza una excepción
     }
+
+    public Prestamo obtenerPrestamo(Libro libroSeleccionado) throws PrestamoException {
+            Iterator<Prestamo> iterator = prestamos.values().iterator();
+            while (iterator.hasNext()) {
+                Prestamo prestamo = iterator.next();
+                if (prestamos.containsValue(prestamo)) {
+                    return prestamo;
+                }
+            }
+        throw new PrestamoException("No se encuentra este prestamo");
+    }
 }
