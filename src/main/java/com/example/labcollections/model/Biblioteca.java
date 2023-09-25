@@ -107,14 +107,23 @@ public class Biblioteca {
     }
 
     public void agregarLibro(String autor, String nombreLibro) throws LibroException {
-        Libro libro = new Libro(autor,nombreLibro,false);
-        if (getLibrosDisponibles().contains(nombreLibro)){
-            throw new LibroException("Este libro ya está agregado");
+        Libro libro = new Libro(autor, nombreLibro, false);
+
+        // Crear un Iterator para recorrer el conjunto de libros disponibles
+        Iterator<Libro> iterator = getLibrosDisponibles().iterator();
+
+        // Usar el Iterator para verificar si ya existe un libro con el mismo nombre
+        while (iterator.hasNext()) {
+            Libro existingLibro = iterator.next();
+            if (existingLibro.getTitulo().equalsIgnoreCase(nombreLibro)) {
+                throw new LibroException("Este libro ya está agregado");
+            }
         }
-        else {
-            getLibrosDisponibles().add(libro);
-        }
+
+        // Si no se encontró un libro con el mismo nombre, agregar el nuevo libro
+        getLibrosDisponibles().add(libro);
     }
+
 
     public void agregarBibliotecario(String id, String nombre) throws BiblitecarioException {
         Bibliotecario bibliotecario = new Bibliotecario(nombre, id);
