@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.labcollections.controller.LibrarianPanelViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
-
+<AnchorPane prefHeight="551.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labcollections.controller.LibrarianPanelViewController">
+   <children>
+      <Button fx:id="btnSalir" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onSalirBttonClick" text="Salir" />
+      <TableView fx:id="tableLibros" layoutX="34.0" layoutY="60.0" onDragDetected="#onDragLibros" prefHeight="200.0" prefWidth="530.0">
+        <columns>
+          <TableColumn fx:id="colAutor" prefWidth="148.39998626708984" text="Autor" />
+          <TableColumn fx:id="colTitulo" prefWidth="298.79998779296875" text="Título" />
+            <TableColumn fx:id="colPrestado" prefWidth="78.40005493164062" text="Prestado" />
+        </columns>
+      </TableView>
+       <TableView fx:id="tablePrestamo" layoutX="41.0" layoutY="303.0" onDragDetected="#onDragTablePrestamo" prefHeight="200.0" prefWidth="239.0">
+           <columns>
+               <TableColumn fx:id="colLibroPrestamo" prefWidth="117.5999984741211" text="Libro" />
+               <TableColumn fx:id="colEstudiantePrestamo" prefWidth="112.79998779296875" text="Estudiante" />
+           </columns>
+       </TableView>
+       <TableView fx:id="tableEstudiantes" layoutX="322.0" layoutY="303.0" prefHeight="200.0" prefWidth="230.0">
+           <columns>
+               <TableColumn fx:id="colNombre" prefWidth="117.39999008178711" text="Nombre" />
+               <TableColumn fx:id="colCedula" prefWidth="113.00001525878906" text="Cedula" />
+           </columns>
+       </TableView>
+      <Button fx:id="btnPretamo" layoutX="108.0" layoutY="511.0" mnemonicParsing="false" onAction="#onPrestamoCLick" text="Nuevo prestamo" />
+   </children>
 </AnchorPane>

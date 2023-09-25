@@ -99,6 +99,7 @@ public class StudentPanelViewController {
         tableLibrosDisponibles.refresh();
         colIdPrestamo.setCellValueFactory(cellData->new SimpleStringProperty(cellData.getValue().getCodigoPrestamo()));
         colDetalle.setCellValueFactory(cellData->new SimpleObjectProperty(cellData.getValue().getDetallesPrestamo()));
+        tablePrestamos.refresh();
         tableLibrosEstudiantes.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection, newSelection)->{
             libroPropioSeleccionado = newSelection;
         });
